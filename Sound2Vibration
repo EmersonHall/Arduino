@@ -1,0 +1,68 @@
+/*
+    Vibration Motor and sound sensor
+*/
+
+const int motorPin1 = 3;
+const int motorPin2 = 5;
+const int motorPin3 = 9;
+const int motorPin4 = 11;
+const int soundpin1=A0;
+const int soundpin2=A1;
+const int soundpin3=A2;
+const int soundpin4=A3;
+const int threshold=30;
+
+void setup()
+{ Serial.begin(9600);
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  pinMode(motorPin3, OUTPUT);
+  pinMode(motorPin4, OUTPUT);
+  pinMode(soundpin1,INPUT);
+  pinMode(soundpin2,INPUT);
+  pinMode(soundpin3,INPUT);
+  pinMode(soundpin4,INPUT);
+
+}
+void loop()
+{
+ int soundsens1=analogRead(soundpin1); 
+    if (soundsens1>=threshold) {
+      analogWrite(motorPin1,255); //motor mit PWM an
+      delay(4);
+    }
+else {
+  analogWrite(motorPin1,0);
+ }
+
+
+
+ int soundsens2=analogRead(soundpin2); 
+    if (soundsens2>=threshold) {
+      analogWrite(motorPin2,255); 
+      delay(4);
+    }
+else {
+  analogWrite(motorPin2,0);
+ }
+
+
+ int soundsens3=analogRead(soundpin3); 
+    if (soundsens3>=threshold) {
+      analogWrite(motorPin3,255); 
+      delay(4);
+    }
+else {
+  analogWrite(motorPin3,0);
+ }
+
+
+ int soundsens4=analogRead(soundpin4); 
+    if (soundsens4>=threshold) {
+      analogWrite(motorPin4,255); //motor an
+      delay(4);
+    }
+else {
+  analogWrite(motorPin4,0);
+ }
+}
